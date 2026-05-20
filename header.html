@@ -1,0 +1,244 @@
+<!-- ============================================================
+     PRIME LEDGER GROUP — Header (include via JS or copy into each page)
+     ============================================================ -->
+<header class="site-header" id="site-header">
+  <div class="header__inner container">
+
+    <!-- LOGO + NAME -->
+    <a href="index.html" class="header__brand">
+      <img src="logo.png" alt="Prime Ledger Group Logo" class="header__logo">
+      <div class="header__brand-text">
+        <span class="header__company">Prime Ledger</span>
+        <span class="header__tagline">Group</span>
+      </div>
+    </a>
+
+    <!-- NAV -->
+    <nav class="header__nav" id="main-nav" aria-label="Main navigation">
+      <ul class="header__nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li class="has-dropdown">
+          <a href="#" class="nav-link nav-link--dropdown">Services <span class="arrow">&#8964;</span></a>
+          <ul class="dropdown">
+            <li><a href="project management.html">Project Management</a></li>
+            <li><a href="financial services.html">Financial Services</a></li>
+            <li><a href="procurement services.html">Procurement Services</a></li>
+            <li><a href="Ethical mineral mandate.html">Ethical Mineral Mandate</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- CTA + TOGGLE -->
+    <div class="header__actions">
+      <a href="contact.html" class="btn btn--gold header__cta">Get in Touch</a>
+      <button class="header__toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<style>
+/* ── HEADER STYLES ──────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(11,31,58,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.18);
+  transition: box-shadow 0.3s;
+}
+.site-header.scrolled {
+  box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  gap: 24px;
+}
+
+/* Brand */
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.header__logo {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.header__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.header__company {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.header__tagline {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Nav */
+.header__nav { flex: 1; display: flex; justify-content: center; }
+.header__nav-list {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  align-items: center;
+}
+.nav-link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #cbd5e0;
+  padding: 8px 14px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+.nav-link:hover, .nav-link.active { color: #fff; background: rgba(201,168,76,0.10); }
+.nav-link--dropdown .arrow { font-size: 0.75rem; }
+
+/* Dropdown */
+.has-dropdown { position: relative; }
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--navy);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 6px;
+  min-width: 220px;
+  list-style: none;
+  padding: 8px 0;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  z-index: 100;
+}
+.dropdown li a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.87rem;
+  color: #cbd5e0;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.dropdown li a:hover { background: rgba(201,168,76,0.08); color: var(--gold); }
+.has-dropdown:hover .dropdown { display: block; }
+
+/* CTA + Toggle */
+.header__actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.header__cta { padding: 10px 22px; font-size: 0.84rem; }
+
+.header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+}
+.header__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: all 0.3s;
+  transform-origin: center;
+}
+.header__toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.header__toggle.open span:nth-child(2) { opacity: 0; }
+.header__toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .header__cta { display: none; }
+  .header__nav {
+    position: absolute;
+    top: 76px; left: 0; right: 0;
+    background: var(--navy);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: none;
+    flex-direction: column;
+    padding: 16px 0;
+  }
+  .header__nav.open { display: flex; }
+  .header__nav-list { flex-direction: column; width: 100%; gap: 0; }
+  .nav-link { padding: 14px 24px; border-radius: 0; }
+  .has-dropdown .dropdown {
+    position: static;
+    display: none !important;
+    border: none;
+    box-shadow: none;
+    background: rgba(255,255,255,0.03);
+    padding-left: 16px;
+  }
+  .has-dropdown.mobile-open .dropdown { display: block !important; }
+  .header__toggle { display: flex; }
+}
+</style>
+
+<script>
+(function () {
+  const toggle = document.getElementById('menu-toggle');
+  const nav    = document.getElementById('main-nav');
+  const header = document.getElementById('site-header');
+
+  /* Hamburger toggle */
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  /* Mobile dropdown toggle */
+  document.querySelectorAll('.has-dropdown').forEach(item => {
+    item.querySelector('.nav-link--dropdown').addEventListener('click', e => {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        item.classList.toggle('mobile-open');
+      }
+    });
+  });
+
+  /* Scroll shadow */
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* Active link highlight */
+  const page = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link').forEach(a => {
+    if (a.getAttribute('href') === page) a.classList.add('active');
+  });
+})();
+</script>
